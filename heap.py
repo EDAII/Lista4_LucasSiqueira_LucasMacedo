@@ -1,20 +1,28 @@
-def order_by_frequency(word_list):
-    
-    big_word = ''.join(word_list)
+def pre_processing(arr):
+    big_word = ''.join(arr)
+
+    print('\nTransformando as palavras ordenadas em uma grande palavra ->')
+    print(big_word)
     
     letters_list = [[i, big_word.count(i)] for i in set(big_word)]
     
     take = lambda i: i[1]
     sorted_list = sorted(letters_list, key=take, reverse=True)
-    
-    heap = heapSort([i.copy() for i in sorted_list], len(big_word))
-    print(heap)
+    copy = [i.copy() for i in sorted_list]
+
+    return copy, len(big_word)
+
+
+def heap_frequence_sort(arr):
+    sorted_list, trash = pre_processing(arr)
+
+    print('\nOrdenando decrescentemente pela frequencia das letras utilizando heap sort ->')
 
     big_sorted_word = ''
     for i in sorted_list:
         big_sorted_word += i[0] * i[1]
 
-    return big_sorted_word
+    print(big_sorted_word)
 
 
 def heapify(arr, n, i): 
@@ -34,8 +42,11 @@ def heapify(arr, n, i):
 		heapify(arr, n, largest) 
 
 
-def heapSort(arr, t): 
+def heap_rearrange(arr):
+    arr, tam = pre_processing(arr) 
     n = len(arr) 
+
+    print('\nRearanjando letras de forma que nao hajam letras iguais lado a lado ->')
 
     for i in range(n, -1, -1): 
         heapify(arr, n, i)
@@ -60,13 +71,8 @@ def heapSort(arr, t):
 
         heapify(arr, len(arr), 0)
 
-    if len(new_str) != t:
-        return 'Deu ruim parça!'
-
-    return new_str
-
-
-print(order_by_frequency(['aaabc']))
-print(order_by_frequency(['aaabb']))
-print(order_by_frequency(['aa']))
-print(order_by_frequency(['aaaabc']))
+    if len(new_str) != tam:
+        print('Deu ruim parça!')
+        return
+    
+    print(new_str)

@@ -1,6 +1,6 @@
 import re
 
-#Check the size of the word with more length
+# Check the size of the word with more length
 def check_max_word_size(words):
     m_length = 0
     for word in words:
@@ -9,17 +9,20 @@ def check_max_word_size(words):
 
     return m_length
 
-#Adds '.' characters to the words that have less length than the max, so we can compare the same indexes
+
+# Adds '.' characters to the words that have less length than the max, so we can compare the same indexes
 def set_same_size(words, max_size):
     new_list=[]
     for word in words:
         new_arr = ['.' * (max_size - len(word))]
         new_list.append(word.lower()+''.join(new_arr))
-    print(new_list)
     return new_list
 
-#Recursive radix_sort (LSD), starting on the least significant, in this case, the last character of each word
+
+# Recursive radix_sort (LSD), starting on the least significant, in this case, the last character of each word
 def radix_sort(words, max_size, index):
+    print(words)
+    
     if(index == max_size+1):
         return words
     dic = []
@@ -28,48 +31,46 @@ def radix_sort(words, max_size, index):
     letter_index=0
     tmp_list = []
 
-#create dic with the value for each letter of the alphabet, in order to make comparision possible
+    # Create dic with the value for each letter of the alphabet, in order to make comparision possible
     for x in range(26):
         dict_letters.update({letters[letter_index]:(x+1)})
         letter_index+=1
         dict_letters.update({'.':1000})
 
-#create a dict with key value corresponding to the word and its value
+    # Create a dict with key value corresponding to the word and its value
     for word in words:
         if(dict_letters[word[max_size-index].lower()] < 1000 ):
             dic.append([word.lower(), dict_letters[word[max_size-index].lower()] ])
 
-    #create and sort a list of words for the current index
+    # Create and sort a list of words for the current index
     for x, y in dic:
         tmp_list.append([x,y])
         tmp_list.sort(key=lambda x: x[1])
 
-    #create a return list that is populated with the list above
+    # Create a return list that is populated with the list above
     return_list=[]
     for item in tmp_list:
         return_list.append(item[0])
 
-    #add the remaining elements that are ordered from previous recursions
+    # Add the remaining elements that are ordered from previous recursions
     for item in words:
         if item not in return_list:
             return_list.append(item.lower())
 
-    #recursive call for the next index
+    # Recursive call for the next index
     return radix_sort(return_list, max_size, index+1)
 
 
-def main():
-    words = ["Apple", "Australia", "Algorithm", "sell", "Olympic", "jack", "sleep"]
+def radix_demostration(words):
     max_size = check_max_word_size(words)
     new_list = set_same_size(words, max_size)
     new_list = radix_sort(new_list, max_size-1, 0)
-    #Remove the dots previously added to the words
+    
+    # Remove the dots previously added to the words
     index = 0
     for word in new_list:
         new_list[index]= re.sub('[.]', '', word)
         index+=1
-    #Print the final ordered list, all lower case
+    
+    # Print the final ordered list, all lower case
     print(new_list)
-
-if __name__ == '__main__':
-    main()
