@@ -14,19 +14,85 @@ Lucas Macedo - 15/0137397
 
 Input: aaa bc 
 
-Output: abaca 
+Output: 
 
-Input: aaa bb
+> Ordenando alfabeticamente atraves do radix sort ->
 
-Output: ababa 
+> ['aaa', 'bc.', '...']
 
-Input: a a 
+> ['aaa', 'bc.', '...']
 
-Output: Deu ruim parça!
+> ['aaa', 'bc.', '...']
 
-Input: aa aa bc 
+> ['aaa', 'bc.', '...']
 
-Output: Deu ruim parça!
+> ['aaa', 'bc', '']
+
+> Transformando as palavras ordenadas em uma grande palavra ->
+
+> aaabc
+
+> Ordenando decrescentemente pela frequencia das letras utilizando heap sort ->
+
+> aaacb
+
+> Transformando as palavras ordenadas em uma grande palavra ->
+
+> aaabc
+
+> Rearanjando letras de forma que nao hajam letras iguais lado a lado ->
+
+> [['a', 3], ['c', 1], ['b', 1]]
+
+> [['b', 1], ['c', 1]]
+
+> [['a', 2], ['c', 1]]
+
+> [['c', 1]]
+
+> [['a', 1]]
+
+> abaca
+
+Input: aa bc aa 
+
+Output:
+
+> Ordenando alfabeticamente atraves do radix sort ->
+
+> ['aa', 'bc', 'aa']
+
+> ['aa', 'aa', 'bc']
+
+>['aa', 'aa', 'bc']
+
+>['aa', 'aa', 'bc']
+
+>Transformando as palavras ordenadas em uma grande palavra ->
+
+>aabcaa
+
+>Ordenando decrescentemente pela frequencia das letras utilizando heap sort ->
+
+>aaaacb
+
+>Transformando as palavras ordenadas em uma grande palavra ->
+
+>aabcaa
+
+> Rearanjando letras de forma que nao hajam letras iguais lado a lado ->
+
+>[['a', 4], ['c', 1], ['b', 1]]
+
+>[['b', 1], ['c', 1]]
+
+>[['a', 3], ['c', 1]]
+
+>[['c', 1]]
+
+>[['a', 2]]
+
+>Deu ruim parça!
 
 ## Referências
 >https://www.quora.com/How-can-I-sort-strings-using-Radix-Sort
