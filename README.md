@@ -6,7 +6,7 @@ Lucas Macedo - 15/0137397
 
 ## Descrição:
 
-Consiste na entrada de palavras separadas por um unico espaço, em que a partir da utilização do radix sort são ordendas, em seguida as palavras são agrupadas em uma unica string, com essa string ordenamos as letras pela frequencia em que elas aparecem, em seguida utilizando heap fazemos um rearranjo dos caracteres de modo que não haja dois adjacentes iguais. 
+Consiste na entrada de palavras separadas por um unico espaço, em que a partir da utilização do radix sort são ordendas, em seguida as palavras são agrupadas em uma unica string, com essa string ordenamos as letras pela frequencia em que elas aparecem, posteriormente utilizando heap fazemos um rearranjo dos caracteres de modo que não haja dois adjacentes iguais. 
 
 ## Para executar:
 
